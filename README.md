@@ -1,16 +1,13 @@
 # Laporan Praktikum 06 - State Management
 
-> Nama: **(isi nama)** · NIM: **(isi NIM)** · Kelas: **(isi kelas)**
+> Nama: **David Pratama Tampubolon** · NIM: **23520009** ·
 >
-> Struktur: `master_plan/` (Praktikum 1-3) dan `week3_todo/` (Praktikum 4-5 + AI Challenge).
-> Ganti teks `Namaku` pada AppBar dengan nama panggilan Anda (ada komentar `TODO` di kodenya).
-> Setelah menjalankan aplikasi, rekam GIF dan taruh di folder `docs/`, lalu ganti placeholder `![...](docs/...)` di bawah.
 
 ---
 
 ## Praktikum 1: Dasar State dengan Model-View
 
-![GIF Praktikum 1](docs/praktikum1.gif)
+<img width="774" height="417" alt="image" src="https://github.com/user-attachments/assets/cad209be-a46d-4c1a-bdc5-4771ba2d9726" />
 
 Kode Praktikum 1 ada di `master_plan/snapshots/praktikum1/` (salin `main.dart` dan `plan_screen.dart` ke `lib/`, `lib/views/`). Model (`task.dart`, `plan.dart`, `data_layer.dart`) ada di `lib/models/`.
 
@@ -29,7 +26,15 @@ File `data_layer.dart` hanya berisi `export 'plan.dart'; export 'task.dart';`. P
 
 ### Soal 4 - Hasil Langkah 9
 
-![GIF Langkah 9](docs/praktikum1-langkah9.gif)
+<img width="773" height="287" alt="image" src="https://github.com/user-attachments/assets/49aa8632-1568-4de8-8daf-257ed1e01328" />
+
+<img width="774" height="491" alt="image" src="https://github.com/user-attachments/assets/479a8067-ee74-4032-a218-230b81b526f0" />
+
+<img width="940" height="99" alt="image" src="https://github.com/user-attachments/assets/29d02943-89ff-4935-bf19-36b7df355eae" />
+
+<img width="940" height="90" alt="image" src="https://github.com/user-attachments/assets/5dcbb1e5-69cf-43a0-aa6e-522efa0eb100" />
+
+<img width="940" height="159" alt="image" src="https://github.com/user-attachments/assets/cb109b5f-d7c7-4437-9b65-29664322c4df" />
 
 Yang dibuat: daftar tugas dinamis. Tombol `+` (FloatingActionButton) menambah `Task` kosong ke `plan.tasks`. Setiap item ditampilkan oleh `_buildTaskTile` sebagai `ListTile` berisi `Checkbox` (mengubah `complete`) dan `TextFormField` (mengubah `description`). Karena data immutable, setiap perubahan membuat `Task` dan `Plan` baru (`List<Task>.from(...)..[index] = Task(...)`) lalu dibungkus `setState` agar UI digambar ulang.
 
@@ -42,7 +47,7 @@ Yang dibuat: daftar tugas dinamis. Tombol `+` (FloatingActionButton) menambah `T
 
 ## Praktikum 2: InheritedWidget dan InheritedNotifier
 
-![GIF Praktikum 2](docs/praktikum2.gif)
+<img width="940" height="505" alt="image" src="https://github.com/user-attachments/assets/9b850597-6496-46bd-a88a-148a69cd0bbc" />
 
 Kode ada di `master_plan/snapshots/praktikum2/` (`main.dart`, `plan_provider.dart`, `plan_screen.dart`).
 
@@ -69,7 +74,11 @@ Keduanya berupa *getter turunan* (derived data) yang dihitung dari `tasks`, buka
 
 ### Soal 4 - Hasil Langkah 9
 
-![GIF Langkah 9 Praktikum 2](docs/praktikum2-langkah9.gif)
+<img width="940" height="351" alt="image" src="https://github.com/user-attachments/assets/2d257476-3205-42a9-977b-6b204b979900" />
+
+<img width="940" height="599" alt="image" src="https://github.com/user-attachments/assets/5b7d249d-24cb-4f44-8925-60440e35a23d" />
+
+<img width="940" height="600" alt="image" src="https://github.com/user-attachments/assets/51b43904-a016-4f00-bc9b-6c9ea58cba91" />
 
 Secara tampilan hampir sama dengan Praktikum 1, tetapi ada footer progres ("x out of y tasks") dan arsitekturnya berubah: data tidak lagi disimpan di `State` milik `PlanScreen`, melainkan di `ValueNotifier<Plan>` yang disediakan `PlanProvider`. `ValueListenableBuilder` membangun ulang UI setiap `Plan` berubah. Inilah pemisahan view dan model yang dimaksud modul.
 
@@ -92,13 +101,17 @@ Inti pelajarannya adalah **"Lift State Up"**: `PlanProvider` diletakkan di atas 
 
 ### Soal 3 - Hasil Langkah 14
 
-![GIF Langkah 14](docs/praktikum3-langkah14.gif)
+<img width="872" height="469" alt="image" src="https://github.com/user-attachments/assets/3189a3bd-cf85-469b-bacf-f50acbb8283e" />
+
+<img width="864" height="403" alt="image" src="https://github.com/user-attachments/assets/35724296-c067-4a78-a926-fab5bd6831cc" />
 
 Yang dibuat: layar "Master Plans" dengan kolom input untuk menambah plan baru (`addPlan` menambahkan `Plan` ke `ValueNotifier<List<Plan>>`). Jika kosong tampil ikon dan teks "Anda belum memiliki rencana apapun." Jika ada isi, `ListView` menampilkan nama plan dan progresnya; mengetuk salah satu membuka `PlanScreen` untuk mengelola task-nya.
 
 ### Perbaikan terhadap kode modul
 
 Beberapa bagian kode di modul akan error atau berperilaku salah, dan sudah diperbaiki di `master_plan/lib/`:
+
+<img width="867" height="467" alt="image" src="https://github.com/user-attachments/assets/6686dedf-720f-49ee-b82a-3642af1fcc97" />
 
 | Masalah di modul | Perbaikan |
 |---|---|
@@ -116,7 +129,13 @@ Keterbatasan: plan dicari berdasarkan `name`, jadi dua plan dengan nama sama aka
 
 Kode: `week3_todo/lib/main.dart`, `providers/todo_provider.dart`, `pages/todo_page.dart`.
 
-![GIF Praktikum 4](docs/praktikum4.gif)
+<img width="940" height="505" alt="image" src="https://github.com/user-attachments/assets/c1e5ee5d-7ca1-46a8-a4c5-276a08d2e37d" />
+
+<img width="940" height="504" alt="image" src="https://github.com/user-attachments/assets/90c88490-afaf-457c-981b-8a3cf71d5fea" />
+
+<img width="940" height="504" alt="image" src="https://github.com/user-attachments/assets/884526a7-e2ac-4b1c-82ae-f65cd08bc6a3" />
+
+<img width="940" height="504" alt="image" src="https://github.com/user-attachments/assets/a77d83e8-87ea-4ca9-bd1b-20df6f07950e" />
 
 Poin yang perlu Anda pahami untuk demo:
 
@@ -129,6 +148,18 @@ Poin yang perlu Anda pahami untuk demo:
 ## Praktikum 5: AsyncValue (loading, error, success)
 
 Kode: `providers/products_provider.dart`, `pages/product_page.dart` (buka lewat ikon kotak di AppBar halaman ToDo).
+
+<img width="940" height="386" alt="image" src="https://github.com/user-attachments/assets/9154c51e-b4f1-46a3-b499-80b935c02968" />
+
+<img width="940" height="383" alt="image" src="https://github.com/user-attachments/assets/c47f5914-0b17-43dd-b0a5-b54f145c6504" />
+
+<img width="940" height="372" alt="image" src="https://github.com/user-attachments/assets/499ce43a-5759-4a43-bfac-bbb22fc378e7" />
+
+<img width="940" height="274" alt="image" src="https://github.com/user-attachments/assets/b2871a1b-f812-4bf9-939c-ee89ed554dca" />
+
+<img width="940" height="504" alt="image" src="https://github.com/user-attachments/assets/9ef45118-b69d-4344-a311-e4c1abcddd82" />
+
+<img width="940" height="426" alt="image" src="https://github.com/user-attachments/assets/de168a92-5298-4b6f-9719-bfe1912ba559" />
 
 | No | Tugas | Hasil yang diamati (isi dari hasil run Anda) |
 |---|---|---|
